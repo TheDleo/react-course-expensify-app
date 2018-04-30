@@ -58,5 +58,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.test
+.env.development
 
 public/dist/
