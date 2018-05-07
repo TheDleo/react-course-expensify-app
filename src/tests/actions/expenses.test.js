@@ -1,6 +1,15 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { startAddExpense, addExpense, editExpense, removeExpense, startRemoveExpense, setExpenses, startSetExpenses } from '../../actions/expenses';
+import {
+    startAddExpense,
+    addExpense,
+    editExpense,
+    startEditExpense,
+    removeExpense,
+    startRemoveExpense,
+    setExpenses,
+    startSetExpenses
+} from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
 
@@ -22,6 +31,26 @@ test('should setup removeExpense action object', () => {
     });
 });
 
+test('should remove expense from firebase', (done) => {
+    const store = createMockStore({});
+    const id = expenses[1].id;
+    store.dispatch(startRemoveExpense({ id })).then(() => {
+        const actions = store.getActions();
+        expect(actions[0].type).toBe('REMOVE_EXPENSE');
+        expect(actions[0].id).toBe(id);
+        expect(actions[0]).toEqual({
+            type: 'REMOVE_EXPENSE',
+            id
+        });
+
+        return database.ref(`expenses/${id}`).once('value')
+
+    }).then((snapshot) => {
+        expect(snapshot.val()).toBe(null);
+        done();
+    })
+});
+
 test('should return correct editExpense action object', () => {
     const result = editExpense('12345', { description: 'Test description' });
     expect(result).toEqual({
@@ -30,6 +59,30 @@ test('should return correct editExpense action object', () => {
         updates: {
             description: 'Test description'
         }
+    });
+});
+
+test('should edit expense in firebase', (done) => {
+    const store = createMockStore();
+    const id = expenses[2].id;
+    const updates = {
+        description: 'Testing startEditExpense',
+        amount: 10000000,
+        note: 'this is my new test note',
+        createdAt: -10000
+    }
+
+    store.dispatch(startEditExpense( id, updates )).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'EDIT_EXPENSE',
+            id,
+            updates
+        });
+        return database.ref(`expenses/${id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toEqual(updates);
+        done();
     });
 });
 
@@ -121,24 +174,4 @@ test('should fetch expenses from firebase', (done) => {
         console.log(e);
         done();
     });
-});
-
-test('should remove expense from firebase', (done) => {
-    const store = createMockStore({});
-    const id = expenses[1].id;
-    store.dispatch(startRemoveExpense({ id })).then(() => {
-        const actions = store.getActions();
-        expect(actions[0].type).toBe('REMOVE_EXPENSE');
-        expect(actions[0].id).toBe(id);
-        expect(actions[0]).toEqual({
-            type: 'REMOVE_EXPENSE',
-            id
-        });
-
-        return database.ref(`expenses/${id}`).once('value')
-
-    }).then((snapshot) => {
-        expect(snapshot.val()).toBe(null);
-        done();
-    })
 });
