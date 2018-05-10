@@ -8,12 +8,14 @@ exports[`should render ExpenseForm correctly 1`] = `
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -96,6 +98,7 @@ exports[`should render ExpenseForm correctly 1`] = `
       withPortal={false}
     />
     <textarea
+      className="text-area"
       onChange={[Function]}
       placeholder="Add a note for your expense (optional)"
       value=""
@@ -115,12 +118,14 @@ exports[`should render ExpenseForm with expense data 1`] = `
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value="Rent"
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -203,6 +208,7 @@ exports[`should render ExpenseForm with expense data 1`] = `
       withPortal={false}
     />
     <textarea
+      className="text-area"
       onChange={[Function]}
       placeholder="Add a note for your expense (optional)"
       value=""
@@ -222,12 +228,14 @@ exports[`should render error for invalid form submit 1`] = `
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -310,6 +318,7 @@ exports[`should render error for invalid form submit 1`] = `
       withPortal={false}
     />
     <textarea
+      className="text-area"
       onChange={[Function]}
       placeholder="Add a note for your expense (optional)"
       value=""
@@ -332,12 +341,14 @@ exports[`should render error for invalid form submit 2`] = `
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="text"
@@ -420,6 +431,7 @@ exports[`should render error for invalid form submit 2`] = `
       withPortal={false}
     />
     <textarea
+      className="text-area"
       onChange={[Function]}
       placeholder="Add a note for your expense (optional)"
       value=""
