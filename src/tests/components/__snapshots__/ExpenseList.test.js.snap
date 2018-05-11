@@ -23,9 +23,17 @@ exports[`should render ExpenseList with empty message 1`] = `
       Amount
     </div>
   </div>
-  <p>
-    No Expenses
-  </p>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No expenses
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
@@ -52,29 +60,33 @@ exports[`should render ExpenseList with expenses 1`] = `
       Amount
     </div>
   </div>
-  <ExpenseListItem
-    amount={195}
-    createdAt={0}
-    description="Gum"
-    id="1"
-    key="0"
-    note=""
-  />
-  <ExpenseListItem
-    amount={109500}
-    createdAt={-345600000}
-    description="Rent"
-    id="2"
-    key="1"
-    note=""
-  />
-  <ExpenseListItem
-    amount={4500}
-    createdAt={345600000}
-    description="Credit Card"
-    id="3"
-    key="2"
-    note=""
-  />
+  <div
+    className="list-body"
+  >
+    <ExpenseListItem
+      amount={195}
+      createdAt={0}
+      description="Gum"
+      id="1"
+      key="0"
+      note=""
+    />
+    <ExpenseListItem
+      amount={109500}
+      createdAt={-345600000}
+      description="Rent"
+      id="2"
+      key="1"
+      note=""
+    />
+    <ExpenseListItem
+      amount={4500}
+      createdAt={345600000}
+      description="Credit Card"
+      id="3"
+      key="2"
+      note=""
+    />
+  </div>
 </div>
 `;

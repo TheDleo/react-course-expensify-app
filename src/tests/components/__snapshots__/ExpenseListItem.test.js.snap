@@ -7,14 +7,20 @@ exports[`should render ExpenseListItem with expense 1`] = `
   to="/edit/3"
 >
   <div>
-    <h3>
+    <h3
+      className="list-item__title"
+    >
       Credit Card
     </h3>
-    <span>
+    <span
+      className="list-item__sub-title"
+    >
       January 4th, 1970
     </span>
   </div>
-  <h3>
+  <h3
+    className="list-item__data"
+  >
     $45.00
   </h3>
 </Link>
