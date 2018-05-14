@@ -28,8 +28,8 @@ test('should handle edit expense', () => {
     expect(startEditExpense).toHaveBeenLastCalledWith(expenses[0].id,expenses[0]);
 });
 
-test('should handle remove expense', () => {
+test('should open remove expense modal on click', () => {
+    expect(wrapper.find('RemoveExpenseModal').prop('modalIsOpen')).toBe(false);
     wrapper.find('button').simulate('click');
-    expect(history.push).toHaveBeenLastCalledWith('/');
-    expect(startRemoveExpense).toHaveBeenLastCalledWith({ id: expenses[0].id });
+    expect(wrapper.find('RemoveExpenseModal').prop('modalIsOpen')).toBe(true);
 });
